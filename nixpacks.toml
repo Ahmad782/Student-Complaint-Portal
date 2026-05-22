@@ -1,2 +1,5 @@
 [phases.setup]
 nixPkgs = ["php84", "php84Packages.composer", "nodejs_22", "npm"]
+
+[variables]
+COMPOSER_ALLOW_SUPERUSER = "1"
