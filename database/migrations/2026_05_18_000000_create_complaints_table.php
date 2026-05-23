@@ -7,23 +7,20 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
+{
+    if (!Schema::hasTable('complaints')) {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->string('student_name');
-            $table->string('roll_no');
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('department');
-            $table->string('semester')->nullable();
-            $table->string('category');
-            $table->string('priority')->default('Normal');
-            $table->string('subject');
+            $table->string('title');
             $table->text('description');
-            $table->string('status')->default('Pending');
+            $table->string('category');
+            $table->string('status')->default('pending');
+            $table->string('tracking_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
+}
 
     public function down(): void
     {
